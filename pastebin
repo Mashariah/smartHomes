@@ -1,0 +1,18 @@
+ <tr>
+                        <td>
+                            <span class="prop-info">An absolute position element is positioned relative to the 
+                                first parent element that has a position other than static. 
+                                If no such element is found, the containing block is </span>
+                            <img src="images/test-images/nanyuki1.jpg" class="property-image" alt="nanyuki"/>
+                        </td>
+                        <td>
+                            <span class="prop-info">An absolute position element is positioned relative to the 
+                                first parent element that has a position other than static. 
+                                If no such element is found, the containing block is </span>
+                            <img src="images/test-images/nanyuki1.jpg" class="property-image" alt="nanyuki"/>
+                        </td>
+                        <td>
+                            <span class="prop-info">House 2</span>
+                            <img src="images/test-images/karen1.jpg" class="property-image" alt="nanyuki"/>
+                        </td>
+                    </tr>
