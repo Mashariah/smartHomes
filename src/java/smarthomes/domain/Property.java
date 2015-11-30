@@ -1,6 +1,11 @@
 
 package smarthomes.domain;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
+
 /**
  *
  * @author Kelli
@@ -16,6 +21,7 @@ public class Property {
     private String propIntent;
     private String saleStatus;
     private double price;
+    private String priceFormatted; //quick hack for currency formatted price..
     private int locationId;
     private String imgDirLocation;
     private String description;
@@ -28,6 +34,8 @@ public class Property {
     
     /**
      * Create a Property from database record fetch
+     * @param location
+     * @param propertyId
      * @param ownerId
      * @param area
      * @param propertyType
@@ -39,19 +47,25 @@ public class Property {
      * @param keywords 
      * @param header 
      */
-    public Property(int ownerId,String propertyType,String saleStatus,double price,
+    public Property(Location location,int propertyId, int ownerId,String propertyType,String saleStatus,double price,
             int locationId,String imageDir,String description, String keywords, String header){
+        this.location = location;
+        this.propertyId = propertyId;
         this.ownerId = ownerId;
         this.propertyType = propertyType;
         this.locationId = locationId;
         this.saleStatus = saleStatus;
         this.price = price;
+        setPriceFormatted(price);
         this.imgDirLocation = imageDir;
         this.description = description;
         this.keywords = keywords;
         this.header = header;
     }
 
+    /*
+    Create a Property from the form supplied values
+    */
     public Property(PropertyOwner owner, Location location, String propType, 
             String propIntent, String propPrice, String propDesc,
             String propHeader, String propKeywords,String dirName) {
@@ -248,6 +262,29 @@ public class Property {
      */
     public void setOwner(PropertyOwner owner) {
         this.owner = owner;
+    }
+
+    /**
+     * @return the priceFormatted
+     */
+    public String getPriceFormatted() {
+        return priceFormatted;
+    }
+
+    /**
+     * I did this to save time on refactoring the class 
+     * @param price the priceFormatted to set
+     * Format the supplied double to a currency value with regional settings
+     * for KE.
+     */
+    public void setPriceFormatted(double price) {
+//       this.priceFormatted = "Ksh 345,000";
+        Locale locale = new Locale.Builder().setRegion("KE").setLanguage("en").build();
+//       alternatively  Locale loc = Locale.US
+        NumberFormat format = NumberFormat.getCurrencyInstance(locale);
+        ((DecimalFormat) format).setMinimumFractionDigits(0);
+        ((DecimalFormat) format).setCurrency(Currency.getInstance(locale));
+        this.priceFormatted = format.format(price);
     }
     
 }

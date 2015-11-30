@@ -25,7 +25,7 @@ public class PropertiesList extends HttpServlet {
         List<Property> listing = new PropertyController().getAllProperties();
         Logger.getLogger(PropertiesList.class.getName()).
                 log(Level.INFO, "Items in List {0}",String.valueOf(listing.size()));
-        request.setAttribute("listing", listing);
+        getServletContext().setAttribute("listing", listing);
         request.getRequestDispatcher("/properties.jsp").forward(request, response);
         
     }

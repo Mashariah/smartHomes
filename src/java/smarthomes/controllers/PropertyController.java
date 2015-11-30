@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import smarthomes.domain.Location;
@@ -24,8 +26,14 @@ public class PropertyController {
     private ResultSet results;
     private Connection connection;
 
-    private final String findProperties
-            = "SELECT * FROM Property order by property_id desc";
+    private final String getAllProperties
+            = "SELECT * FROM smarthomes_db.property, smarthomes_db.location where\n"
+            + "smarthomes_db.property.location_id = smarthomes_db.location.location_id"
+            + " order by smarthomes_db.property.property_id desc;";
+    private final String searchProperties
+            = "select * from property,location \n" +
+            "where match(description,keywords) against (?)"
+            + " and property.location_id = location.location_id;";
     private final String addNewLocation = "insert into smarthomes_db.location"
             + "(county,division,town,road,plot_number) values (?,?,?,?,?)";
     private final String addNewOwner = "insert into smarthomes_db.property_owner"
@@ -44,16 +52,19 @@ public class PropertyController {
 
     /**
      * Get a listing of all properties
+     *
      * @return list of properties
      */
     public List<Property> getAllProperties() {
         List<Property> listOfProperties = new ArrayList<>();
         try {
             connection = connSupp.getConnectionUsingDriverManager();
-            PreparedStatement pstatement = connection.prepareStatement(findProperties);
+            PreparedStatement pstatement = connection.prepareStatement(getAllProperties);
             results = pstatement.executeQuery();
             while (results.next()) {
-                Property p = new Property(results.getInt("owner_id"),
+                Location location = new Location(results.getString("county"),
+                        results.getString("division"), results.getString("town"), results.getString("road"));
+                Property p = new Property(location, results.getInt("property_id"), results.getInt("owner_id"),
                         results.getString("property_type"),
                         results.getString("sale_status"), results.getDouble("price"),
                         results.getInt("location_id"), results.getString("images_dir_id"), results.getString("description"), results.getString("keywords"),
@@ -67,26 +78,26 @@ public class PropertyController {
                 connSupp.closeConnection(connection);
             }
         }
-        System.out.println("Items in list: " + listOfProperties.size());
         return listOfProperties;
     }
 
     /**
-     * Add a new Property item to the properties table 
+     * Add a new Property item to the properties table
+     *
      * @param property instance to add
      * @return status of the update (success or failure)
      */
     public boolean addNewProperty(Property property) {
-        
-        int state = 0; 
+
+        int state = 0;
         Location location = property.getLocation();
         PropertyOwner owner = property.getOwner();
-        
+
         int ownerId = addNewOwner(owner);
         int locationId = addNewLocation(location);
-        
+
         try {
-            connection =connSupp.getConnectionUsingDriverManager();
+            connection = connSupp.getConnectionUsingDriverManager();
             PreparedStatement statement = connection.prepareStatement(addNewProperty);
             statement.setInt(1, ownerId);
             statement.setString(2, property.getPropertyType());
@@ -101,7 +112,7 @@ public class PropertyController {
         } catch (SQLException ex) {
             Logger.getLogger(PropertyController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return state>-1;
+        return state > -1;
     }
 
     /**
@@ -138,11 +149,12 @@ public class PropertyController {
         }
         return ownerId;
     }
-    
+
     /**
      * Add a new location to the Location table
+     *
      * @param location
-     * @return 
+     * @return
      */
     public int addNewLocation(Location location) {
 
@@ -194,5 +206,41 @@ public class PropertyController {
             sqle.printStackTrace();
         }
         return lastAdded;
+    }
+    
+    /**
+     * Find a property using the keywords entered by user
+     * @param keywords user supplied keywords
+     * @return the list of property items matching the keywords
+     */
+    public ArrayList<Property> findPropertyWithKeywords(String propertyType,String keywords){
+            ArrayList<Property> propertiesFound = new ArrayList<>();
+        try {
+            connection = connSupp.getConnectionUsingDriverManager();
+            PreparedStatement pstatement = connection.prepareStatement(searchProperties);
+            pstatement.setString(1, keywords);
+            results = pstatement.executeQuery();
+            while (results.next()) {
+                                Location location = new Location(results.getString("county"),
+                        results.getString("division"), results.getString("town"), results.getString("road"));
+                Property p = new Property(location, results.getInt("property_id"), results.getInt("owner_id"),
+                        results.getString("property_type"),
+                        results.getString("sale_status"), results.getDouble("price"),
+                        results.getInt("location_id"), results.getString("images_dir_id"), results.getString("description"), results.getString("keywords"),
+                        results.getString("header"));
+                propertiesFound.add(p);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PropertyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return propertiesFound;
+    }
+    
+    //utility method to format Double value in price
+    public String formatValue(double dVal){
+        Locale locale = new Locale.Builder().setLanguage("en").setRegion("KE").setExtension('c', "Ksh").build();
+        
+        NumberFormat format = NumberFormat.getCurrencyInstance(locale);
+        return format.format(dVal);
     }
 }

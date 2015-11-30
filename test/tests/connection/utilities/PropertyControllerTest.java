@@ -21,7 +21,7 @@ public class PropertyControllerTest {
     @Test
     public void testGetProperties(){
         List<Property> list = pc.getAllProperties();
-        Assert.assertEquals(3, list.size());
+        Assert.assertEquals(4, list.size());
     }
     
 //    @Test
@@ -38,7 +38,7 @@ public class PropertyControllerTest {
         Assert.assertEquals(7,locationId);
     }
     
-    @Test
+//    @Test
     public void testAddProperty(){
         PropertyOwner pOwner = new PropertyOwner("Mariana", "Mosary", "morsay@gmail.co.ke", "872233188");
         Location location = new Location("NYANDARUA", "Kabati", "Kiters", "Landhies Rd.");
@@ -46,5 +46,10 @@ public class PropertyControllerTest {
                 "APARTMENT", "LEASE", "250000", "This is prime property for farming", "Farm Land", "farming,", "3422");
         Assert.assertTrue(pc.addNewProperty(p));
                
+    }
+    
+    @Test
+    public void testConversion(){
+        Assert.assertEquals("KES5,000.00",pc.formatValue(5000));
     }
 }

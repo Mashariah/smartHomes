@@ -1,0 +1,110 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20-Nov-2015, 16:47:10
+    Author     : Kelli
+*/
+
+@import "core.css";
+
+body{
+    margin-left: 200px;
+    margin-right: 200px;
+    /*background: #ccccff;*/
+}
+
+.frm-block{
+    padding:10px;
+    margin:5px 10px 5px 5px;;
+    font-size: small;
+    border:solid thin #ccccff;
+    width:auto;
+    height: auto;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.frm-block-txarea{
+    padding:10px;
+    margin:5px;
+    font-size: small;
+    border:solid thin #ccccff;
+    width:95%;
+    height: auto;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.frm-block input{
+    padding: 3px;
+    /*margin-left: 5px;*/
+    margin-right: 5px;
+    color: #3333ff;
+    border:solid thin #006699;
+}
+
+.frm-block label{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.frm-block label#header{
+    font-weight: bold;
+    color: #000066;
+}
+
+.frm-block-txarea label#header{
+    font-weight: bold;
+    color: #000066;
+}
+
+.frm-block-txarea input[type=text]#desc-header{
+    width:100%;
+    margin-bottom: 10px;
+    border:#006699 thin solid;
+    margin-top: 10px;
+    padding: 2px;
+}
+
+.frm-block-txarea textArea{
+    width: 98%;
+    height:150px;
+    padding:10px;
+    border:#006699 thin solid;
+}
+
+.frm-block select{
+    align-content: center;
+    width: 100%;
+    padding: 2px;
+    border:solid thin #006699;
+}
+
+.frm-block table{
+margin-top:10px;
+}
+
+.frm-block-txarea input[type=submit]{
+    float: right;
+    display: inline-block;
+    background: #006666;
+    color: #ffffff;
+    width: 120px;
+    font-size: small;
+    font-weight: 700;
+    padding:7px;
+    border: #006666;
+    margin-right: 0px;
+}
+
+/* input[type=submit]#upload-block{
+    width:70px;
+    height: 30px;
+    font-size: small;
+    display: inline-block;
+    background:#006666;
+    color:#ffffff;
+}*/
