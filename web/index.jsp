@@ -58,6 +58,7 @@
                 <li><img  src="images/slider/image5-s.jpg"></li>
                 <li><img  src="images/slider/image6-s.jpg"></li>
                 <li><img  src="images/slider/image7-s.jpg"></li>
+            </ul>
                 </div>
     </body>
 </html>

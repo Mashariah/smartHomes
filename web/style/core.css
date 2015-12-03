@@ -138,12 +138,12 @@ a.plist-item-btndetails{
     padding:10px;
     border: none;
     border-radius: 3px;
-    
+
     /**Gradients/
     background: -webkit-linear-gradient(red, blue); /* For Safari 5.1 to 6.0 */
-background: -o-linear-gradient(#003333, #006666); /* For Opera 11.1 to 12.0 */
-background: -moz-linear-gradient(#003333, #006666); /* For Firefox 3.6 to 15 */
-background: linear-gradient(#003333, #006666); /* Standard syntax */
+    background: -o-linear-gradient(#003333, #006666); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#003333, #006666); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#003333, #006666); /* Standard syntax */
 }
 
 /*
@@ -170,7 +170,7 @@ Search bar on index page.
     position:absolute;
     right: 170px;
     border:#003333 thin solid;
-    
+
 }
 
 #search-widget input[type=text]{
@@ -208,9 +208,9 @@ Search bar on index page.
     height: 35px;
     /**Gradients/
     background: -webkit-linear-gradient(red, blue); /* For Safari 5.1 to 6.0 */
-background: -o-linear-gradient(#003333, #006666); /* For Opera 11.1 to 12.0 */
-background: -moz-linear-gradient(#003333, #006666); /* For Firefox 3.6 to 15 */
-background: linear-gradient(#003333, #006666); /* Standard syntax */ 
+    background: -o-linear-gradient(#003333, #006666); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#003333, #006666); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#003333, #006666); /* Standard syntax */ 
 }
 
 
@@ -232,8 +232,9 @@ input[type=submit]{
 }
 
 .details-desc{
+    display: block;
     float: right;
-    width:45%;
+    width:40%;
     height:600px;
     padding: 10px;
 }
@@ -260,21 +261,33 @@ input[type=submit]{
     padding:4px;
 }
 
+/* Communications toolbar: Property details page */
 .details-toolbar{
-/*    background:#ccccff;*/
+    /*    background:#ccccff;*/
     margin:6px;
     width:50%;
-    height: 180px;
+    height: auto;
     float: left;
-    border:#666666 solid thin;
+    /*border:#666666 solid thin;*/
     padding:3px;
-    
+
 }
 
-.details-toolbar a {
+.details-toolbar span{
+    padding: 5px;
+    font-size: medium;
+    font-weight: 500;
+    background:#006666;
+    color:#ffffff;
+    width:98%;
+    margin:3px 0px;
+    display: inline-block;
+}
+
+.details-toolbar button {
     display: inline-block;
     width: auto;
-    height: 20px;
+    height: 30px;
     padding: 3px;
     border:#666666 solid thin;
     color:#333333;
@@ -287,19 +300,118 @@ input[type=submit]{
 .details-toolbar a:link{
     background:#006666;
     color:#ffffff;
-    
+
 }
 
-.email-board{
-    /*position: relative;*/
+#email-board{
+    display: inline-block;
+    margin:1px;
+    margin-bottom: 0px;
+    padding:10px 5px;
+    border:#cccccc thin solid;
+    width: 97%;
+    height:auto;
+    /*display: none;*/
+}
+
+#email-board textArea{
+    width: 95%;
+    height:auto;
+    padding: 5px;
+    background: white;
+    color:#333333;
+    display:inline-block;
+    margin:1px;
+    border:solid thin #666666;
+}
+
+#email-board input[type=submit]{
+    display: inline-block;
+    width: 100px;
+    height:auto;
+    padding: 4px;
+    background:#006699;
+    color:#ffffff;
+    font-size:small;
+    margin:0px 15px;
+    float: right;
+}
+
+#email-board input[type=text], input[type=email], input[type=tel] {
+    /*display: inline-block;*/
+    width: 45%;
+    height:auto;
+    padding: 5px;
+    font-size:small;
+    margin-bottom:10px;
+}
+
+.text_message-board{
     display: inline-block;
     background:#669900;
     margin:1px;
     padding:2px;
     border:#666666 thin solid;
-    /*display:none;*/
     width: 97%;
     height:100px;
-    display: none;
 }
 
+#confirm-box{
+    
+}
+
+
+
+
+/** Carousel for the details slider */
+/** ====================================**/
+.details-slider{
+    /*float: left;*/
+    width: 400px;
+    height: 300px;
+}
+
+/**galllery for the details page image display*/
+.simplegallery{
+    width:50%;
+    height: 100%;
+    /*border:solid #003333 thin;*/
+    padding: 10px;
+    float: left;
+    background: #ffffff;
+}
+
+.simplegallery .content {
+    background: #006666;
+    position: relative;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    float: left;
+}
+
+.simplegallery .content img {
+    width: 100%;
+    border: 1px solid #9c9c9c;
+    /*float: left;*/
+}
+
+.simplegallery .thumbnail { margin-top: 5px; }
+
+.simplegallery .thumbnail .thumb {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 0 5px 0 0;
+    cursor: pointer;
+}
+
+.simplegallery .thumbnail .thumb img {
+    border: 1px solid #9c9c9c;
+    width: 100px;
+}
+
+.simplegallery .thumbnail .last { margin: 0; }
+
+.clear { clear: both; }

@@ -23,6 +23,14 @@
         <servlet-name>Search</servlet-name>
         <servlet-class>smarthomes.servlets.Search</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VisitBooking</servlet-name>
+        <servlet-class>smarthomes.servlets.VisitBooking</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BookingManager</servlet-name>
+        <servlet-class>smarthomes.servlets.BookingManager</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PropertyListing</servlet-name>
         <url-pattern>/properties</url-pattern>
@@ -42,6 +50,14 @@
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisitBooking</servlet-name>
+        <url-pattern>/messenger</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookingManager</servlet-name>
+        <url-pattern>/booking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
