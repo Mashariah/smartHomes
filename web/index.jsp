@@ -24,15 +24,15 @@
                     autoControls: true,
                     adaptiveHeight:false,
                     mode:'fade',
-                    speed:2000
+                    speed:5000
             });
         });
         </script>
     </head>
     <body id="index-bg">
         <div id="banner">
-            <div id="logo"><img src="images/banners/logo_1.png" width="100px" height="100px" alt="comp-logo"/></div>
-            <div id="comp-name"></div>
+            <div id="logo"><img src="images/banners/logo3.png" width="100px" height="100px" alt="comp-logo"/></div>
+            <!--<div id="comp-name"></div>-->
         </div>
         <div class="content-body">
             <%@include file="menubar.jsp"%>
@@ -55,9 +55,9 @@
 <!--                <li><img  src="images/slider/image2.jpg" title="Farm for Sale" height="400px"></li>
                 <li><img  src="images/slider/image3.jpg" height="400px"></li>
                 <li><img  src="images/slider/image4.jpg" height="400px"></li>-->
-                <li><img  src="images/slider/image5-s.jpg"></li>
+                <li><img  src="images/slider/image1.png"></li>
+                <li><img  src="images/slider/image2.png"></li>
                 <li><img  src="images/slider/image6-s.jpg"></li>
-                <li><img  src="images/slider/image7-s.jpg"></li>
             </ul>
                 </div>
     </body>

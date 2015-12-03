@@ -43,7 +43,7 @@ table tr td{
 
 /*main container for dynamic content*/
 body#index-bg{
-    background-image: url(../images/banners/Cottage-30.jpg);
+    background-image: url(../images/banners/web-backgrnd.png);
     background-repeat: repeat-x;
     background-position: top left;
 }
@@ -169,7 +169,7 @@ Search bar on index page.
     background:#ffffff;
     position:absolute;
     right: 170px;
-    border:#003333 thin solid;
+    border:#cccccc thin solid;
 
 }
 

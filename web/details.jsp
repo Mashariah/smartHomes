@@ -40,8 +40,7 @@
             .ui-timepicker-wrapper{font-size: 9pt;}
         </style>
         <div id="banner">
-            <div id="logo"><img src="images/banners/logo_1.png" width="100px" height="100px" alt="comp-logo"/></div>
-            <div id="comp-name"></div>
+            <div id="logo"><img src="images/banners/logo3.png" width="100px" height="100px" alt="comp-logo"/></div>
         </div>
         <div class="content-body">
             <%@include file="menubar.jsp"%>
