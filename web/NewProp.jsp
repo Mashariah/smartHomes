@@ -9,11 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../style/admin_core.css" rel="stylesheet" type="text/css"/>
         <title>|SmartHomes - New Property|</title>
+        <link href="style/admin_core.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-        <h1>New Property</h1>
+        <%@include  file="admin_dashboard.jsp"%>
+        <body>
+        <div id ="scontent">
         <form action="img_upload" method="post" enctype="multipart/form-data">
             <div class="frm-block">
                 <label id="header">Owner's Details</label>
@@ -82,5 +83,6 @@
                 <input type="submit" value="Create Property" id="upload-block">
             </div>  
         </form>
+        </div>
     </body>
 </html>

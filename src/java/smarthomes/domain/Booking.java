@@ -12,6 +12,7 @@ import java.sql.Date;
 public class Booking {
 
     private Visitor visitor;
+    private Property property;
     private int propertyId;
     private Date dateOfVisit;
     private Date timeOfVisit;
@@ -21,6 +22,19 @@ public class Booking {
         this.propertyId = propertyId;
         this.dateOfVisit = dateOfVisit;
         this.timeOfVisit = timeOfVisit;
+    }
+    
+    /**Constructor: create booking from database result set
+     * @param v
+     * @param p
+     * @param dVisit
+     * @param tVisit
+     */
+    public Booking(Visitor v, Property p, Date dVisit, Date tVisit){
+        this.visitor = v;
+        this.property = p;
+        dateOfVisit = dVisit;
+        timeOfVisit = tVisit;
     }
     
 
@@ -78,5 +92,19 @@ public class Booking {
      */
     public void setTimeOfVisit(Date timeOfVisit) {
         this.timeOfVisit = timeOfVisit;
+    }
+
+    /**
+     * @return the property
+     */
+    public Property getProperty() {
+        return property;
+    }
+
+    /**
+     * @param property the property to set
+     */
+    public void setProperty(Property property) {
+        this.property = property;
     }
 }

@@ -1,18 +1,20 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
+
 /* 
     Created on : 20-Nov-2015, 16:47:10
     Author     : Kelli
 */
 
-@import "core.css";
+/*@import "core.css";*/
 
-body{
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: roboto;
+}
+
+#scontent{
     margin-left: 200px;
-    margin-right: 200px;
+    margin-right: 100px;
     /*background: #ccccff;*/
 }
 
@@ -108,3 +110,136 @@ margin-top:10px;
     background:#006666;
     color:#ffffff;
 }*/
+
+/*dash board panel*/
+/*#rcontent{
+    margin-left:150px;
+    margin-right:200px;
+    margin-bottom:100px;
+    font-family: roboto;
+    border: solid thin #003333;
+    top:60px;
+    position: absolute;
+}*/
+
+/*Top Banner for the admin pages */
+
+#dashboard-banner{
+    /*background-repeat: no-repeat;*/
+    width: 100%;
+    height:100px;
+    background:#003333;
+    margin-left: 0px;
+    margin-right: 0px;
+    overflow:hidden;
+}
+
+#dashboard-banner h2{
+    margin-left: 200px;
+    padding: 25px 5px 5px 5px;
+    color:#ffffff;
+    font-weight:bolder;
+    font-size:large;
+}
+#dashboard-banner h3{
+    margin-left: 200px;
+    padding: 0px 0px 5px 5px;
+    color:#ffffff;
+    font-weight:bold;
+    font-size:medium;
+}
+
+/* menu bar */
+#menu-bar{
+    width:100px;
+    padding: 0px;
+    background:#1980EC;
+    display:inline-block;
+    margin-left: 100px;
+    float: left;
+    margin-top:60px;
+}
+
+.menu-bar-item{
+    width: 100px;
+    font-size: medium;
+    padding:5px 0px 0px 5px;
+    display: inline-block;
+    border-bottom: thin solid #ffffff;
+    font-size: small;
+    color:white;
+    font-weight:bold;
+    }
+
+/*first item in the menubar*/
+#first.menu-bar-item {
+    width: 100px;
+    padding:5px 0px 5px 5px;
+    display: inline-block;
+    border-top: thin solid #ffffff;
+    font-size: small;
+    color:white;
+    font-weight:bold;
+}
+
+#toolbar{
+    margin-top:40px;
+    padding: 2px 0px 0px 0px;
+    margin-left: 205px;
+    margin-right: 100px;
+    border:#cccccc solid thin;
+    background:#999999;
+}
+
+#toolbar a{
+    display: inline-block;
+    color:#ffffff;
+    width:50px;
+    text-decoration: none;
+    font-size:smaller;
+    vertical-align: bottom;
+    text-align: center;
+    margin-bottom: 5px;
+    border-right:#ffffff thin solid;
+    
+}
+
+/*Property listing div*/
+.property-item{
+    width:90%;
+    height:70px;
+    padding:5px;
+    border:solid thin #cccccc;
+}
+
+.property-thumbnail{
+   width:120px;
+   padding:5px;
+   height:65px;
+   display: inline-block;
+   float: left;
+}
+
+.property-item-header{
+    font-size:small;
+    color:#990000;
+    font-weight:bolder;
+    display: inline-block;
+    
+}
+
+.property-item-pricetag{
+    font-size:small;
+    color:#003333;
+    display: inline;
+}
+
+span.property-item-text{
+    font-size:smaller;
+    color:#003333;
+    width:80%;
+    height:50px;
+    display:block;
+    overflow:hidden;
+}
+

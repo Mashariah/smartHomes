@@ -25,9 +25,7 @@
                 <a href="#">Login</a> | 
                 <a href="#">Register</a>
             </div>
-            <c:forEach var="item" items="${pageScope.listing}">
-                            <c:out value="${item}"/>
-                    </c:forEach>
+
             <table>
                 <thead></thead>
                 <tbody>

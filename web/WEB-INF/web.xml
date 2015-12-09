@@ -28,8 +28,8 @@
         <servlet-class>smarthomes.servlets.VisitBooking</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>BookingManager</servlet-name>
-        <servlet-class>smarthomes.servlets.BookingManager</servlet-class>
+        <servlet-name>BookingsListing</servlet-name>
+        <servlet-class>smarthomes.servlets.BookingsListing</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PropertyListing</servlet-name>
@@ -56,7 +56,7 @@
         <url-pattern>/messenger</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>BookingManager</servlet-name>
+        <servlet-name>BookingsListing</servlet-name>
         <url-pattern>/booking</url-pattern>
     </servlet-mapping>
     <session-config>

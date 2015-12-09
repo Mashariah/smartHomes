@@ -5,11 +5,11 @@
  */
 package controllers;
 
-import java.sql.Date;
-import java.sql.Time;
-import static org.junit.Assert.assertEquals;
+import java.util.List;
+import org.junit.Assert;
 import org.junit.Test;
 import smarthomes.controllers.BookingController;
+import smarthomes.domain.Booking;
 
 /**
  *
@@ -33,4 +33,10 @@ public class BookingControllerTests {
 //        Time d = bcon.getTimeFromString("11:30pm");
 //        assertEquals("11:30:00",d);
 //    }
+    
+    @Test
+    public void getBooking(){
+        List<Booking> bookings = bcon.getAllBookings();
+        Assert.assertEquals(7,bookings.size());
+    }
 }

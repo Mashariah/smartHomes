@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/web/style/core.css</file>
-            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/web/index.jsp</file>
-            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/web/properties.jsp</file>
-            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/src/java/smarthomes/domain/utilities/SMSEngine.java</file>
-            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/web/style/banner.css</file>
-            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/web/details.jsp</file>
-            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/src/java/smarthomes/servlets/VisitBooking.java</file>
+            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/src/java/smarthomes/servlets/PropertiesList.java</file>
+            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/src/java/smarthomes/servlets/BookingsListing.java</file>
+            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/web/admin_list_properties.jsp</file>
+            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/src/java/smarthomes/controllers/BookingController.java</file>
+            <file>file:/C:/Users/Kelli/Documents/NetBeansProjects/SmartHomes/web/admin_bookings.jsp</file>
         </group>
     </open-files>
 </project-private>

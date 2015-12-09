@@ -21,12 +21,22 @@ public class PropertiesList extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String requestingId = request.getParameter("requestId");
+        String navigationPage;
 //        response.setContentType("text/html;charset=UTF-8");
         List<Property> listing = new PropertyController().getAllProperties();
         Logger.getLogger(PropertiesList.class.getName()).
                 log(Level.INFO, "Items in List {0}",String.valueOf(listing.size()));
         getServletContext().setAttribute("listing", listing);
-        request.getRequestDispatcher("/properties.jsp").forward(request, response);
+        if(requestingId !=null){
+            navigationPage = "/admin_list_properties.jsp";
+        Logger.getLogger(PropertiesList.class.getName()).
+                log(Level.INFO, "Admin listing request, value of requestingId {0}",requestingId);
+        }else{
+            navigationPage = "/properties.jsp";
+        }
+        request.getRequestDispatcher(navigationPage).forward(request, response);
         
     }
 

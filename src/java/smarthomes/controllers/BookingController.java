@@ -7,12 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import smarthomes.domain.Booking;
+import smarthomes.domain.Property;
+import smarthomes.domain.Visitor;
 import smarthomes.domain.utilities.ConnectionSupply;
-import smarthomes.servlets.VisitBooking;
 
 /**
  * http://wazza.co.ke
@@ -27,15 +29,22 @@ public class BookingController {
     private ResultSet results;
     private Connection connection;
     private final ConnectionSupply connSupp;
+    private Logger logger;
 
     //SQL statements 
     private final String visitorCreateSQL = "insert into smarthomes_db.visitors"
             + "(f_name,l_name,email_adrress,phone_number) values (?,?,?,?)";
     private final String bookingCreateSQL = "insert into smarthomes_db.booking"
             + "(visitor_id,property_id,visit_day,visit_time) values (?,?,?,?)";
+    private final String getBookings = "select f_name,l_name,email_adrress,"
+            + "phone_number,header,visit_day,visit_time \n" +
+            "from smarthomes_db.booking,smarthomes_db.property,smarthomes_db.visitors\n" +
+            "where booking.visitor_id = visitors.visitor_id\n" +
+            "and booking.property_id = property.property_id;";
 
     public BookingController() {
         connSupp = new ConnectionSupply();
+        logger = Logger.getLogger(BookingController.class.getName());
     }
 
     /*
@@ -57,7 +66,7 @@ public class BookingController {
             visitorId = getLastAddedItem(connection, "select visitor_id from "
                     + "visitors order by visitor_id desc limit 1;");
         } catch (SQLException ex) {
-            Logger.getLogger(BookingController.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         }
         return visitorId;
     }
@@ -98,5 +107,39 @@ public class BookingController {
         }
         return lastAdded;
     }
-
+    
+    /**
+     * Get list of all bookings made.
+     * @return list of all bookings.
+     */
+    public List<Booking> getAllBookings(){
+        List<Booking> visitBookings = new ArrayList<>();
+        try{
+            connection = connSupp.getConnectionUsingDriverManager();
+            PreparedStatement statement = connection.prepareCall(getBookings);
+            ResultSet rs = statement.executeQuery();
+            logger.log(Level.INFO,"Getting results...");
+            while(rs.next()){
+                //create visitor
+                Visitor visitor = new Visitor(rs.getString("f_name"), rs.getString("l_name"),
+                rs.getString("email_adrress"),rs.getString("phone_number"));
+                //create proerty
+                Property property = new Property();
+                property.setHeader(rs.getString("header"));
+                //create the booking
+                Booking booking = new Booking(visitor,property,rs.getDate("visit_day"),rs.getDate("visit_time"));
+                logger.log(Level.INFO,booking.toString());
+                visitBookings.add(booking);
+            }
+        }catch(Exception exp){
+            logger.log(Level.SEVERE,exp.getMessage());
+            exp.getLocalizedMessage();
+        }
+        finally {
+            if (connection != null) {
+                connSupp.closeConnection(connection);
+            }
+        }
+        return visitBookings;
+    }
 }
