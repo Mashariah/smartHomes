@@ -14,11 +14,13 @@
     </head>
     <body>
         <div id="nav-bar">
-            <ul>
-                <li><a id="nav" href="index.jsp">About</a></li>
-                <li><a id="nav" href="properties">For Sale</a></li>
-                <li><a id="nav" href="#">To Rent</a></li>
-                <li><a id="nav" href="#">Developments</a></li>
+            <ul id="nav-ul">
+                <li id="nav-li"><a id="nav" href="index.jsp">Home</a></li>
+                <li id="nav-li"><a id="nav" href="properties">Properties</a></li>
+                <li id="nav-li"><a id="nav" href="#">Projects</a></li>
+                <li id="nav-li"><a id="nav" href="#">Apartments</a></li>
+                <li id="nav-li"><a id="nav" href="#">Bungalows</a></li>
+                <li id="nav-li"><a id="nav" href="#">About</a></li>
             </ul>
         </div>
     </body>

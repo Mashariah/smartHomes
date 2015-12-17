@@ -30,6 +30,10 @@ public class PropertyController {
             = "SELECT * FROM smarthomes_db.property, smarthomes_db.location where\n"
             + "smarthomes_db.property.location_id = smarthomes_db.location.location_id"
             + " order by smarthomes_db.property.property_id desc;";
+    private final String getAllPropertyByType
+            = "SELECT * FROM smarthomes_db.property, smarthomes_db.location where\n"
+            + "smarthomes_db.property.location_id = smarthomes_db.location.location_id"
+            + " and  property_type= ? order by smarthomes_db.property.property_id desc;";
     private final String searchProperties
             = "select * from property,location \n" +
             "where match(description,keywords) against (?)"
@@ -60,6 +64,39 @@ public class PropertyController {
         try {
             connection = connSupp.getConnectionUsingDriverManager();
             PreparedStatement pstatement = connection.prepareStatement(getAllProperties);
+            results = pstatement.executeQuery();
+            while (results.next()) {
+                Location location = new Location(results.getString("county"),
+                        results.getString("division"), results.getString("town"), results.getString("road"));
+                Property p = new Property(location, results.getInt("property_id"), results.getInt("owner_id"),
+                        results.getString("property_type"),
+                        results.getString("sale_status"), results.getDouble("price"),
+                        results.getInt("location_id"), results.getString("images_dir_id"), results.getString("description"), results.getString("keywords"),
+                        results.getString("header"));
+                listOfProperties.add(p);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PropertyController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (connection != null) {
+                connSupp.closeConnection(connection);
+            }
+        }
+        return listOfProperties;
+    }
+    
+    /**
+     * get property of selected type
+     * 
+     * @param propType
+     * @return list of properties matching type
+     */
+    public List<Property> getPropertyOfType(String propType) {
+        List<Property> listOfProperties = new ArrayList<>();
+        try {
+            connection = connSupp.getConnectionUsingDriverManager();
+            PreparedStatement pstatement = connection.prepareStatement(getAllPropertyByType);
+            pstatement.setString(1, propType);
             results = pstatement.executeQuery();
             while (results.next()) {
                 Location location = new Location(results.getString("county"),

@@ -21,11 +21,16 @@ public class PropertiesList extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String type = request.getParameter("typeOfProperty");
         String requestingId = request.getParameter("requestId");
+        
         String navigationPage;
-//        response.setContentType("text/html;charset=UTF-8");
-        List<Property> listing = new PropertyController().getAllProperties();
+        List<Property> listing;
+        if(type!=null){
+            listing = new PropertyController().getPropertyOfType(type);
+        }else{
+            listing = new PropertyController().getAllProperties();
+        }
         Logger.getLogger(PropertiesList.class.getName()).
                 log(Level.INFO, "Items in List {0}",String.valueOf(listing.size()));
         getServletContext().setAttribute("listing", listing);

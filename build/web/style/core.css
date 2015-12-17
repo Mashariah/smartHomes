@@ -150,7 +150,7 @@ a.plist-item-btndetails{
 Search bar on index page.
 */
 #search-widget{
-    margin:0px 5px 10px 5px;
+    margin:0px 5px 20px 5px;
     /*padding:5px 15px 5px 15px;*/
 }
 
@@ -164,13 +164,12 @@ Search bar on index page.
 }
 
 #search-widget form{
-    width: 40%;
+    width: 39%;
     z-index: 10;
     background:#ffffff;
     position:absolute;
     right: 170px;
     border:#cccccc thin solid;
-
 }
 
 #search-widget input[type=text]{
